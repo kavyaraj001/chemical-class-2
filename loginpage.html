@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kavyaraj Atodariya - Forest Login</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(34, 49, 34, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+      backdrop-filter: blur(8px);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #b2ffb2;
+      font-weight: normal;
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 16px;
+      box-shadow: 0 0 5px #a2cffe66 inset;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #b2ffb2aa inset;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #4caf50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    .error {
+      color: #ffb3b3;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music (Autoplay + Loop) -->
+  <audio autoplay loop>
+    <source src="https://www.SambalpuriStar.In - Namami Shamishan" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="overlay"></div>
+
+  <div class="login-container">
+    <h2>Welcome Kavyraj Atodariya</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <div class="error" id="errorMsg"></div>
+    <div class="footer">Forest themed login • Created with ❤️</div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const error = document.getElementById("errorMsg");
+
+      if (username === "Kavyaraj" && password === "Kavyaraj@2815") {
+        error.style.color = "#a2fca2";
+        error.textContent = "Login successful ✅";
+        setTimeout(() => {
+          window.location.href = "batchpage.html";
+        }, 1000);
+      } else {
+        error.style.color = "#ff8080";
+        error.textContent = "Invalid username or password ❌";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chemical Engineering Class 2</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 50px 30px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .text-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #f1c40f;
+    }
+
+    .description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .social {
+      margin-top: 25px;
+    }
+
+    .icons a {
+      text-decoration: none;
+      font-size: 1.3rem;
+      margin-right: 12px;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .username {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    .line {
+      width: 100px;
+      height: 2px;
+      background-color: #fff;
+      margin-top: 10px;
+    }
+
+    .image-section {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: auto;
+    }
+
+    .decor {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, #8e44ad, #2c3e50);
+      border-radius: 50%;
+      top: -40px;
+      right: -40px;
+      filter: blur(60px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    #batchBtn {
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #batchBtn:hover {
+      background-color: #2ecc71;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: white;
+      color: #000;
+      margin: 12% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .modal input {
+      padding: 10px;
+      margin-top: 15px;
+      width: 90%;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #3498db;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="text-section">
+      <div class="header">THIS APP IS MADE BY KAVYARAJSINH ATODARIYA</div>
+      <div class="title">Chemical Engineering Class 2</div>
+      <div class="description">
+        This app helps you achieve your goals and prepare effectively for exams.
+      </div>
+      <div class="social">
+        <div>Connect with us:+91 8200549418</div>
+        <div class="icons">
+          <!-- Add icons if needed -->
+        </div>
+        <div class="username">@kavy_araj1602</div>
+        <div class="line"></div>
+      </div>
+      <button id="batchBtn">Enter Batch Code</button>
+    </div>
+
+    <div class="image-section">
+      <div class="decor"></div>
+      <div class="image-wrapper">
+        <img src="https://images.unsplash.com/photo-1600378325043-3fbbfe7f10dc?auto=format&fit=crop&w=800&q=80" alt="Students Studying">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="batchModal" class="modal">
+    <div class="modal-content">
+      <h3>Enter Batch Code</h3>
+      <input type="text" id="batchInput" placeholder="Batch Code" />
+      <button onclick="checkBatchCode()">Submit</button>
+      <div id="msg" class="message"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("batchModal");
+    const btn = document.getElementById("batchBtn");
+    const input = document.getElementById("batchInput");
+    const msg = document.getElementById("msg");
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+      msg.innerText = "";
+      input.value = "";
+    };
+
+    function checkBatchCode() {
+      const enteredCode = input.value.trim();
+      if (enteredCode === "CH2") {
+        msg.style.color = "green";
+        msg.innerText = "✓ Batch code verified!";
+        setTimeout(() => {
+          window.location.href = "batch1.html";
+        }, 1500);
+      } else if (enteredCode === "CH1") {
+        msg.style.color = "green";
+        msg.innerText = "✓ Batch code verified!";
+        setTimeout(() => {
+          window.location.href = "batch2.html";
+        }, 1500);
+      } else {
+        msg.style.color = "red";
+        msg.innerText = "✗ Invalid batch code!";
+      }
+    }
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
